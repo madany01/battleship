@@ -1,0 +1,5 @@
+{
+	"jest.jestCommandLine": "npm test --",
+	"cSpell.words": ["adjacents", "unhighlight", "unplace"],
+	"jest.autoRun": { "watch": false, "onSave": "test-src-file" }
+}

@@ -1,0 +1,253 @@
+.ship-placement-view {
+	max-width: 80rem;
+	overflow: hidden;
+}
+
+.ship-placement-view .player-name {
+	color: #e91e63;
+	font-style: italic;
+}
+
+.ship-placement-view .lr-ctr {
+	position: relative;
+
+	display: flex;
+	align-items: center;
+	gap: 3.6rem;
+}
+
+.ship-placement-view .left,
+.ship-placement-view .right {
+	flex-grow: 1;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.ship-placement-view .left {
+	gap: 3.2rem;
+}
+
+.ship-placement-view .right {
+	gap: 1.2rem;
+}
+
+.ship-placement-view .info-icon {
+	font-size: 2.4rem;
+	color: yellow;
+}
+
+.ship-placement-view .info-modal {
+	pointer-events: none;
+	visibility: hidden;
+	opacity: 0;
+	max-height: 0;
+}
+
+.ship-placement-view .left .ships {
+	display: flex;
+	flex-direction: column;
+	gap: 1.4rem;
+}
+
+.ship-placement-view .left .ships-row {
+	display: flex;
+	align-items: center;
+	gap: 1.2rem;
+}
+
+.ship-placement-view .left .ship {
+	width: calc(2.9rem * var(--len));
+	height: 2.9rem;
+	border: 0.2rem dashed #111;
+	background-color: #111;
+	display: flex;
+	align-items: stretch;
+	gap: 1px;
+
+	transition: all 0.3s;
+}
+
+.ship-placement-view .left .ship-part {
+	background-color: #673ab7;
+	flex: 1;
+	transition: all 0.3s;
+}
+
+.ship-placement-view .left .ship.selected {
+	border: 0.2rem dashed #fff900;
+}
+
+.ship-placement-view .left .ship.placed {
+	cursor: not-allowed;
+}
+
+.ship-placement-view .left .ship.placed .ship-part {
+	background-color: #333;
+}
+
+.ship-placement-view .left-options,
+.ship-placement-view .right-options {
+	display: flex;
+	gap: 1.2rem;
+}
+
+.ship-placement-view .option {
+	font-size: 2.4rem;
+
+	color: inherit;
+
+	border-radius: 0.8rem;
+
+	background-color: hsl(230deg 52% 4%);
+	border: 1px solid currentColor;
+
+	transition: all 0.3s;
+}
+
+.ship-placement-view .left-options {
+	color: hsl(248deg 7% 58%);
+}
+
+.ship-placement-view .left-options .option {
+	padding: 0.2rem 0.4rem;
+}
+
+.ship-placement-view .left-options .option.selected {
+	color: slateblue;
+	transform: scale(1.2);
+}
+
+.ship-placement-view .right-options .option {
+	padding: 0.4rem 0.8rem;
+	color: slateblue;
+}
+
+.ship-placement-view .board {
+	display: grid;
+	grid-template-columns: repeat(var(--board-cols), auto);
+	grid-template-rows: repeat(var(--board-rows), auto);
+	--board-gap: 1px;
+	gap: var(--board-gap);
+
+	padding: 0.2rem;
+	background-color: #000;
+	box-shadow: 0 0 1rem rgb(255 255 255 / 7%);
+
+	transition: all 0.3s;
+}
+
+.ship-placement-view .board.placing {
+	box-shadow: 0 0 1rem #ffeb3b75;
+}
+
+.ship-placement-view .cell {
+	color: hsl(262deg 13% 28%);
+	background-color: currentColor;
+
+	--cell-width: 2.8rem;
+	--cell-height: 2.8rem;
+
+	width: var(--cell-width);
+	height: var(--cell-height);
+
+	border: 0.1rem solid currentColor;
+
+	position: relative;
+
+	display: flex;
+	justify-content: center;
+}
+
+.ship-placement-view .cell.highlight--valid {
+	color: rgba(0, 255, 128, 0.7);
+}
+
+.ship-placement-view .cell.highlight--invalid {
+	color: rgba(255, 99, 71, 0.7);
+}
+
+.ship-placement-view .cell.closed::after {
+	content: '●';
+	color: #999;
+	font-size: 1.8rem;
+}
+
+.ship-placement-view .board.placing .cell.closed:hover {
+	cursor: not-allowed;
+	color: rgba(255, 38, 0, 0.5);
+}
+
+.ship-placement-view .right .ship {
+	position: absolute;
+	left: calc(-1 * var(--board-gap));
+	top: calc(-1 * var(--board-gap));
+	/* width = shipWidth * cellWidth + (shipWidth - 1) * gapSize */
+	width: calc(var(--ship-width) * var(--cell-width) + (var(--ship-width) - 1) * var(--board-gap));
+	height: calc(var(--ship-height) * var(--cell-height) + (var(--ship-height) - 1) * var(--board-gap));
+	z-index: 1;
+	background: #673ab7;
+
+	transition: all 0.3s;
+}
+
+/* background-color: #fdff00b0; */
+
+.ship-placement-view .board:not(.placing) .ship:hover {
+	cursor: pointer;
+	opacity: 0.5;
+}
+
+.ship-placement-view .board.placing .ship:hover {
+	background-color: rgba(255, 38, 0, 0.5);
+}
+
+.ship-placement-view .dropdown-menu-ctr {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.ship-placement-view .dropdown-menu-ctr .menu {
+	position: absolute;
+
+	overflow: hidden;
+
+	min-width: 28rem;
+
+	left: 50%;
+	transform: translateY(-4.8rem);
+	z-index: 3;
+
+	background-color: #111;
+	color: #999;
+
+	font-size: 1.4rem;
+
+	display: flex;
+	flex-direction: column;
+
+	visibility: hidden;
+	opacity: 0;
+
+	transition: all 0.3s ease-out;
+}
+
+.dropdown-menu-ctr:hover .menu {
+	transform: translateY(0);
+	visibility: visible;
+	opacity: 1;
+}
+
+.ship-placement-view .description {
+	font-size: 1.2rem;
+	font-weight: 500;
+	color: grey;
+	padding: 0.8rem 1.2rem;
+}
+
+.ship-placement-view .description::before {
+	content: '🔹  ';
+}

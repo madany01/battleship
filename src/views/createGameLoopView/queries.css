@@ -1,0 +1,38 @@
+@media screen and (max-width: calc(932em/ 16)) {
+	html {
+		font-size: 58%;
+	}
+}
+
+@media screen and (max-width: calc(832em/ 16)) {
+	html {
+		font-size: 54%;
+	}
+
+	.game-loop-view .players-ctr {
+		gap: 4.8rem;
+	}
+
+	.game-loop-view .board {
+		--cell-width: 3rem;
+		--cell-height: 3rem;
+	}
+}
+
+@media screen and (max-width: calc(768em/ 16)) {
+	html {
+		font-size: 50%;
+	}
+}
+@media screen and (max-width: calc(632em/ 16)) {
+	.game-loop-view .players-ctr {
+		flex-wrap: wrap;
+	}
+}
+
+@media screen and (max-width: calc(832em/ 16)) {
+	.game-loop-view .board {
+		--cell-width: 2.7rem;
+		--cell-height: 2.7rem;
+	}
+}

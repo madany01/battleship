@@ -1,0 +1,247 @@
+.game-loop-view {
+	--view-max-width: 100%;
+}
+
+.game-loop-view .players-ctr {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6.4rem;
+}
+
+.game-loop-view .players-ctr > * {
+	flex-grow: 1;
+}
+
+.game-loop-view .player {
+	max-width: 38rem;
+	padding: 1.8rem;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	border-radius: 0.8rem;
+
+	border: 0.3rem solid #333;
+	box-shadow: 0 0 2rem #6c6a6c38;
+
+	filter: brightness(0.75) opacity(0.9);
+	transform: scale(0.94);
+	pointer-events: none;
+
+	transition: all 0.3s;
+}
+
+.game-loop-view .player.targeted:not(.no-clicks) {
+	pointer-events: all;
+}
+
+.game-loop-view .player.targeted,
+.game-loop-view .player.winner,
+.game-loop-view .player.loser {
+	filter: brightness(1) opacity(1);
+	transform: scale(1);
+
+	border-color: #da00ff;
+	box-shadow: 0 0 2rem #da00ff85;
+}
+.game-loop-view .player.targeted .player-name,
+.game-loop-view .player.winner .player-name,
+.game-loop-view .player.loser .player-name {
+	color: #e91e63;
+}
+
+.game-loop-view .player.winner {
+	border-color: springgreen;
+	background-image: linear-gradient(to bottom right, transparent, hsl(150, 100%, 50%, 0.32), transparent);
+	box-shadow: 0 0 2rem springgreen;
+}
+
+.game-loop-view .player.loser {
+	border-color: tomato;
+	background-image: linear-gradient(to bottom right, transparent, hsl(9, 100%, 64%, 0.32), transparent);
+	box-shadow: 0 0 2rem tomato;
+}
+
+.top-area {
+	width: 100%;
+
+	display: flex;
+	justify-content: space-between;
+}
+
+.game-loop-view .player-score .label {
+	font-size: 1.2rem;
+	font-weight: 700;
+	color: grey;
+	text-transform: capitalize;
+}
+
+.game-loop-view .player-score .label::after {
+	content: ': ';
+}
+
+.game-loop-view .player-score .value {
+	font-size: 1.4rem;
+	font-weight: 700;
+	color: #660277;
+}
+
+.game-loop-view .player-name {
+	font-size: 2.8rem;
+	font-weight: 500;
+	text-transform: capitalize;
+	color: #888;
+
+	margin-bottom: 2.4rem;
+	transition: all 0.3s;
+}
+
+.game-loop-view .board-ships-status {
+	display: flex;
+	flex-direction: column;
+	gap: 0.8rem;
+
+	margin-bottom: 3.2rem;
+}
+
+.game-loop-view .board-ships-status .ships-row {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+}
+
+.game-loop-view .board-ships-status .ship-status {
+	width: calc(1rem * var(--len));
+	height: 1rem;
+
+	background-color: #111;
+
+	display: flex;
+	gap: 0.1rem;
+}
+
+.game-loop-view .board-ships-status .ship-part {
+	flex-grow: 1;
+}
+
+.game-loop-view .board-ships-status .ship-status.sunk .ship-part {
+	background-color: #b63a3c;
+}
+
+.game-loop-view .board-ships-status .ship-status:not(.sunk) .ship-part {
+	background-color: #00327a;
+}
+
+.game-loop-view .board {
+	display: grid;
+	--cell-width: 3.2rem;
+	--cell-height: 3.2rem;
+	--board-gap: 1px;
+	grid-template-columns: repeat(var(--board-cols), var(--cell-width));
+	grid-template-rows: repeat(var(--board-rows), var(--cell-height));
+	gap: var(--board-gap);
+}
+
+.game-loop-view .board .cell {
+	background-color: #000;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	position: relative;
+
+	border: 0.1rem solid #000;
+
+	transition: all 0.3s;
+}
+
+.game-loop-view .board .ship {
+	position: absolute;
+	left: calc(-1 * var(--board-gap));
+	top: calc(-1 * var(--board-gap));
+	/* width = shipWidth * cellWidth + (shipWidth - 1) * gapSize */
+	width: calc(var(--ship-width) * var(--cell-width) + (var(--ship-width) - 1) * var(--board-gap));
+	height: calc(var(--ship-height) * var(--cell-height) + (var(--ship-height) - 1) * var(--board-gap));
+
+	border: 0.4rem solid #9e103f;
+
+	z-index: 1;
+
+	pointer-events: none;
+}
+
+.game-loop-view .board .cell.filled {
+	pointer-events: none;
+}
+
+.game-loop-view .board .cell:not(.filled):hover {
+	border-color: yellow;
+	cursor: pointer;
+}
+
+.game-loop-view .board .cell.last-attack {
+	background-color: rgba(255, 255, 0, 0.32);
+}
+
+.game-loop-view .cell.redundant,
+.game-loop-view .cell.miss {
+	/* background-color: #333; */
+}
+
+.game-loop-view .cell.filled::before {
+	display: inline-block;
+	font-weight: 500;
+}
+
+.game-loop-view .cell.miss::before {
+	font-size: 1.6rem;
+	content: '💧';
+	color: #2e4a60;
+}
+
+.game-loop-view .cell.redundant::before {
+	font-size: 1.8rem;
+	content: '●';
+	color: #2e4a60;
+}
+
+.game-loop-view .cell.hit::before {
+	font-size: 2rem;
+	content: '💥';
+}
+
+.game-loop-view .again-btn {
+	padding: 1.2rem 4.8rem;
+	font-size: 2.4rem;
+	font-weight: 500;
+	border: 0.1rem solid #da00ff;
+	color: #da00ff;
+	background-color: transparent;
+	margin: 3.2rem auto;
+	display: block;
+	overflow: hidden;
+	transition: all 0.3s;
+}
+
+.game-loop-view .again-btn:hover {
+	box-shadow: 0 0 1rem #da00ff1c;
+}
+
+.game-loop-view .again-btn .icon {
+	transition: all 0.7s;
+}
+
+.game-loop-view .again-btn:hover .icon {
+	transform: rotate(360deg);
+}
+
+.game-loop-view .again-btn:not(.show) {
+	max-height: 0;
+	margin-top: 0;
+	margin-bottom: 0;
+	padding: 0;
+	border-width: 0;
+}

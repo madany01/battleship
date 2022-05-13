@@ -1,0 +1,121 @@
+html {
+	box-sizing: border-box;
+	font-size: 62.5%;
+}
+
+body {
+	min-height: 100vh;
+	height: 100vh;
+
+	display: flex;
+	flex-direction: column;
+
+	background-color: #000;
+	background-image: linear-gradient(to bottom right, #151638d1, #0d1e3db0);
+	font-family: 'Poppins', sans-serif;
+}
+
+.main-header {
+	padding: 0.2rem 1.2rem;
+	border-bottom: 0.1rem solid #333;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.main-header .logo {
+	color: #fff;
+	font-size: 1.8rem;
+	font-weight: 500;
+	font-style: italic;
+}
+
+.main-header .game-btn {
+	font-size: 1.6rem;
+	font-weight: 500;
+	padding: 0.4rem 1.8rem;
+	border-radius: 0.2rem;
+	background-color: transparent;
+	border: 1px solid #f03e3e;
+	color: #f03e3e;
+	transition: all 0.3s;
+}
+
+.main-header .reset-game-btn {
+	color: #f03e3e;
+	border-color: currentColor;
+}
+
+.main-header .reset-game-btn:hover {
+	background-color: rgba(240, 62, 62, 0.25);
+}
+
+.main-header .restart-game-btn {
+	color: #fab005;
+	border-color: currentColor;
+}
+
+.main-header .restart-game-btn:hover {
+	background-color: hsla(42, 96%, 50%, 0.25);
+}
+
+.main-header .round-number-ctr {
+	background: #343a40;
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+	font-size: 1.5rem;
+	font-weight: 500;
+	padding: 0.4rem 1.6rem;
+	color: #000;
+	border-radius: 0.4rem;
+	text-transform: capitalize;
+}
+
+.main-header .round-number {
+	color: #ffbf00;
+	font-size: 1.8rem;
+	font-weight: 700;
+}
+
+#main-content {
+	flex-grow: 1;
+
+	padding: 1.6rem;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.main-content-container {
+	height: 100%;
+}
+
+.main-footer {
+	border-top: 0.1rem solid #0f0f0f;
+	padding: 0 2.4rem;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+
+	background-color: #0b0c1e;
+}
+
+.copyright {
+	color: #555;
+	font-size: 1.2rem;
+	font-weight: 500;
+}
+
+.github-repo {
+	width: 2.4rem;
+	height: 2.4rem;
+
+	border-radius: 50%;
+	overflow: hidden;
+
+	background-color: #2baaff;
+}

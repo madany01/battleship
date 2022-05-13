@@ -1,0 +1,21 @@
+@media screen and (max-width: calc(768em/ 16)) {
+	html {
+		font-size: 58%;
+	}
+}
+
+@media screen and (max-width: calc(632em/ 16)) {
+	html {
+		font-size: 50%;
+	}
+
+	.ship-placement-view .lr-ctr {
+		gap: 2.8rem;
+	}
+}
+
+@media screen and (max-width: calc(550em/ 16)) {
+	.ship-placement-view .lr-ctr {
+		flex-wrap: wrap;
+	}
+}

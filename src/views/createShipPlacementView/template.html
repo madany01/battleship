@@ -1,0 +1,91 @@
+<section class="view bordered shadowed ship-placement-view">
+	<header class="header">
+		<div class="icon">⚓︎</div>
+		<h2>
+			<span class="player-name">playerX</span>
+			<span>&apos;s ship placement</span>
+		</h2>
+	</header>
+
+	<div class="content">
+		<div class="lr-ctr">
+			<div class="dropdown-menu-ctr">
+				<i class="info-icon bi bi-info-circle menu-opener"></i>
+				<ul class="menu">
+					<li>
+						<p class="description">select ship from the left by clicking, then hover over the grid to place it</p>
+					</li>
+					<li><p class="description">no two ship can be adjacent</p></li>
+					<li><p class="description">double click on the placed ship to delete it</p></li>
+				</ul>
+			</div>
+
+			<div class="left">
+				<div class="ships">
+					<!-- <script>
+						;(function () {
+							'use strict'
+							const shipsLengths = [[1, 1, 1, 1], [2, 2, 2], [3, 3], [4]]
+							const el = document.querySelector('.ships')
+
+							shipsLengths.forEach(group => {
+								const groupEl = htmlToElement(`<div class="ships-row" style="--len: ${group[0]};"></div>`)
+
+								group.forEach((len, idx) => {
+									const classes = len === 3 ? ['selected', 'placed'] : null
+									const shipEl = htmlToElement(`<button class="ship ${classes ? classes[idx] : ''}"></button>`)
+									for (let i = 0; i < len; i++) shipEl.appendChild(htmlToElement(`<span class="ship-part"> </span>`))
+									groupEl.appendChild(shipEl)
+								})
+								el.append(groupEl)
+							})
+						})()
+					</script> -->
+				</div>
+
+				<div class="left-options">
+					<button class="option horizontal selected">
+						<i class="bi bi-hr"></i>
+					</button>
+					<button class="option vertical">
+						<i class="bi bi-vr"></i>
+					</button>
+				</div>
+			</div>
+
+			<div class="right">
+				<div class="board">
+					<!-- <script>
+						;(function () {
+							'use strict'
+							const el = document.querySelector('.board')
+							const html = `<div class="cell"></div>`
+							for (let i = 0; i < 100; i++) {
+								const template = document.createElement('template')
+								template.innerHTML = html.trim()
+								el.appendChild(template.content.firstChild)
+							}
+
+							let ship = `<div style="--ship-height: ${1}; --ship-width: ${2}" class="ship"></div>`
+							el.children[1 + 0].appendChild(htmlToElement(ship))
+							el.children[1 + 2].classList.add('closed')
+						})()
+					</script> -->
+				</div>
+
+				<div class="right-options">
+					<button class="option clear">
+						<i class="bi bi-arrow-repeat"></i>
+					</button>
+					<button class="option random-placement">
+						<i class="bi bi-shuffle icon"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="actions">
+		<button class="view-action--next">next</button>
+	</div>
+</section>

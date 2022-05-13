@@ -1,0 +1,95 @@
+.game-mode-view {
+	--view-max-width: 60rem;
+}
+
+.game-mode-view .game-mode-options {
+	margin-bottom: 3.2rem;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 3.6rem;
+}
+
+.game-mode-view .game-mode-option {
+	padding: 0.5rem 2.4rem;
+
+	font-size: 1.5rem;
+	font-weight: 500;
+	color: #555;
+	text-transform: capitalize;
+
+	background-color: hsl(226deg 54% 9%);
+	border-radius: 0.4rem;
+	border: 0.1rem solid currentColor;
+
+	transition: all 0.3s;
+}
+
+.game-mode-view .game-mode-option.selected {
+	box-shadow: 0 0 2rem rgb(127 0 255 / 11%);
+	color: hsl(270, 40%, 40%);
+	border-color: currentColor;
+	transform: scale(1.2);
+}
+
+.game-mode-view .player-names {
+	display: flex;
+	flex-direction: column;
+	gap: 1.6rem;
+	margin-bottom: 2.4rem;
+}
+
+.game-mode-view .player-name-input {
+	max-width: 40rem;
+
+	padding: 0.8rem;
+	border-radius: 0.8rem;
+	background-color: transparent;
+	border: 0.2rem solid hsl(270, 40%, 20%);
+
+	color: hsl(270, 40%, 82%);
+
+	transition: all 0.3s;
+}
+
+.game-mode-view .player-name-input.disabled,
+.game-mode-view .player-name-input:disabled {
+	filter: grayscale(1) opacity(0.6);
+}
+
+.game-mode-view .grid-ships-options {
+	display: flex;
+	flex-direction: column;
+	gap: 2.4rem;
+}
+
+.game-mode-view .grid-ships-option {
+	display: flex;
+	align-items: center;
+	gap: 1.8rem;
+	cursor: pointer;
+}
+
+.game-mode-view .grid-ships-option-details {
+	display: flex;
+	flex-direction: column;
+	background-color: rgb(0 0 0 / 48%);
+	padding: 0.4rem;
+	border-radius: 0.8rem;
+}
+
+.game-mode-view .grid-dims-ctr,
+.game-mode-view .ship-lengths-ctr {
+	font-size: 1.3rem;
+	font-weight: 500;
+}
+
+.game-mode-view .grid-dims-ctr {
+	color: cadetblue;
+}
+
+.game-mode-view .ship-lengths-ctr {
+	color: cadetblue;
+}
