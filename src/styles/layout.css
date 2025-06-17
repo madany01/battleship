@@ -16,10 +16,12 @@ body {
 }
 
 .main-header {
-	padding: 0.2rem 1.2rem;
+	padding: 0.8rem 1.2rem;
 	border-bottom: 0.1rem solid #333;
 	display: flex;
-	justify-content: space-between;
+	gap: 2.4rem;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
 	align-items: center;
 }
 
@@ -30,11 +32,18 @@ body {
 	font-style: italic;
 }
 
+.main-header .game-btns-ctr {
+	display: flex;
+	gap: 1.2rem;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
 .main-header .game-btn {
 	font-size: 1.6rem;
 	font-weight: 500;
-	padding: 0.4rem 1.8rem;
-	border-radius: 0.2rem;
+	padding: 0.2rem 1.2rem;
+	border-radius: 0.9rem;
 	background-color: transparent;
 	border: 1px solid #f03e3e;
 	color: #f03e3e;
@@ -60,14 +69,14 @@ body {
 }
 
 .main-header .round-number-ctr {
-	background: #343a40;
+	background: #673ab729;
 	display: flex;
 	align-items: center;
 	gap: 0.4rem;
 	font-size: 1.5rem;
 	font-weight: 500;
 	padding: 0.4rem 1.6rem;
-	color: #000;
+	color: #673ab7;
 	border-radius: 0.4rem;
 	text-transform: capitalize;
 }
