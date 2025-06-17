@@ -1,3 +1,6 @@
+import './styles/style.css'
+import './styles/layout.css'
+
 import PubSub from 'pubsub-js'
 
 import PubSubEvents from './PubSubEvents'
